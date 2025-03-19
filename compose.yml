@@ -6,7 +6,7 @@ services:
       TZ: Asia/Tokyo
       POSTGRES_PASSWORD: password
     volumes:
-      - postgresql_data:/var/lib/postgresql/data
+      - postgresql_data_geocode_play:/var/lib/postgresql/data
     ports:
       - 5432:5432
     healthcheck:
@@ -23,8 +23,8 @@ services:
     stdin_open: true
     volumes:
       - .:/myapp
-      - bundle_data:/usr/local/bundle:cached
-      - node_modules:/myapp/node_modules
+      - bundle_data_geocode_play:/usr/local/bundle:cached
+      - node_modules_geocode_play:/myapp/node_modules
     environment:
       TZ: Asia/Tokyo
     ports:
@@ -33,6 +33,6 @@ services:
       db:
         condition: service_healthy
 volumes:
-  bundle_data:
-  postgresql_data:
-  node_modules:
+  bundle_data_geocode_play:
+  postgresql_data_geocode_play:
+  node_modules_geocode_play:
