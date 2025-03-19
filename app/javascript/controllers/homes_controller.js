@@ -32,13 +32,20 @@ export default class extends Controller {
     const { Geocoder } = await google.maps.importLibrary("geocoding");
 
 		// Googleマップ初期表示
-		// 第１引数はGoogleマップを表示する要素を指定する
     this.map = new Map(this.mapTarget, {
       center: tokyoStation, // マップの中心座標
       zoom: 15, // マップの拡大(0:広域 ... 拡大:18？)
       mapId: "DEMO_MAP_ID", // マップID(とりあえず付けておいた方が良さそう)
-      // disableDefaultUI: true, // マップに表示されている全UIの無効化
-      // zoomControl: true, // ズーム用UIの有効化
+    });
+
+    // マーカー表示
+    const pin= new PinElement({});
+    const marker= new AdvancedMarkerElement({
+      map: this.map,
+      position: tokyoStation,
+      content: pin.element,
+      title: "Tokyo Station",
+      gmpClickable: true,
     });
   }
 
