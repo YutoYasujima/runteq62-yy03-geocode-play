@@ -11,10 +11,14 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     coordinate: Array,
+    address: String,
+    test: Object,
     // counter: Number,
-  }
+  };
 
   connect() {
+    console.log(this.addressValue);
+    console.log(this.testValue);
     console.log("Maps Controller Connected");
     loadGoogleMaps(this.apiKeyValue).then(() => this.initMap());
   }
@@ -39,7 +43,7 @@ export default class extends Controller {
     });
 
     // マーカー表示
-    const pin= new PinElement({});
+    const pin = new PinElement({});
     const marker= new AdvancedMarkerElement({
       map: this.map,
       position: tokyoStation,

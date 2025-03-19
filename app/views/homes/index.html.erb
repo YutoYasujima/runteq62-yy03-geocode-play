@@ -1,7 +1,9 @@
 <div
   data-controller="homes"
   data-homes-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
-  data-homes-coordinate-value="<%= @coordinate.to_json.html_safe %>"
+  data-homes-coordinate-value="<%= @coordinate.to_json %>"
+  data-homes-address-value="<%= @address_name %>"
+  data-homes-test-value="<%= @test.to_json %>"
 >
   <div id="map" data-homes-target="map" style="width: 500px; height: 500px;"></div>
   <!-- <div data-homes-counter-value="0" data-homes-target="counter">0</div>
