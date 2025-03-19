@@ -60,5 +60,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "geocoder"
 gem "tailwindcss-rails", "~> 4.1"
 gem 'dotenv-rails'

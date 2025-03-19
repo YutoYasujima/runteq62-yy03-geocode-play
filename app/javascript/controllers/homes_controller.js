@@ -3,18 +3,27 @@ import { loadGoogleMaps } from "../google_maps_loader";
 
 // Connects to data-controller="homes"
 export default class extends Controller {
-  static targets = ["map"];
+  static targets = [
+    "map",
+    // "counter",
+  ];
+
+  static values = {
+    apiKey: String,
+    coordinate: Array,
+    // counter: Number,
+  }
 
   connect() {
     console.log("Maps Controller Connected");
-    loadGoogleMaps(this.element.dataset.apiKey).then(() => this.initMap());
+    loadGoogleMaps(this.apiKeyValue).then(() => this.initMap());
   }
 
   async initMap() {
     console.log("Initializing Tutorial Map...");
 
     // 東京駅の緯度・経度
-    const tokyoStation = {lat: 35.6812996, lng: 139.7670658};
+    const tokyoStation = {lat: this.coordinateValue[0], lng: this.coordinateValue[1]};
 
 		// 使用するライブラリのインポート
 		// 「google.maps.～」と書かずにすむようになる。
@@ -32,4 +41,15 @@ export default class extends Controller {
       // zoomControl: true, // ズーム用UIの有効化
     });
   }
+
+  // increment() {
+  //   this.counterValue += 1;
+  //   this.counterTarget.textContent = this.counterValue;
+  // }
+
+  // valuesに登録しておくことで、値が変更されたときに発火する
+  // changedイベントを監視できる(Reactのstateみたいなこと？)
+  // counterValueChanged(value, previousValue) {
+  //   console.log(`value: ${value}, previousValue: ${previousValue}`);
+  // }
 }
