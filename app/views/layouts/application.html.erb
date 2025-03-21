@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title><%= content_for(:title) || "Myapp" %></title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -15,6 +16,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= yield :stylesheets %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
