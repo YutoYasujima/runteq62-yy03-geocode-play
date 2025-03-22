@@ -1,0 +1,31 @@
+<h2>検索結果</h2>
+<div class="mb-4">
+  <%= link_to 'ホームへ', homes_path, class: 'text-blue-600' %>
+  <%= link_to 'スポット一覧へ', spots_path, class: 'text-blue-600' %>
+</div>
+<div
+  data-controller="searchs"
+  data-searchs-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
+  data-searchs-records-value="<%= @spots.to_json %>"
+  data-searchs-spot-value="<%= @spot.to_json %>"
+>
+  <div class="flex mb-8">
+    <div id="map" data-searchs-target="map" style="width: 500px; height: 500px;"></div>
+    <div class="ml-8">
+      <% if @spots.present? %>
+        <table class="table-auto">
+          <thead class="border-b-1">
+            <tr>
+              <th>住所</th><th>緯度</th><th>経度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @spots %>
+          </tbody>
+        </table>
+      <% else %>
+        データがありません。
+      <% end %>
+    </div>
+  </div>
+</div>

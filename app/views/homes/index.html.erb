@@ -1,6 +1,9 @@
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag "homes/index", media: "all" %>
 <% end %>
+<div class="mb-4">
+  <%= link_to 'スポット一覧へ', spots_path, class: 'text-blue-600' %>
+</div>
 <div
   data-controller="homes"
   data-homes-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
@@ -16,5 +19,7 @@
   </button> -->
   <div>
   </div>
-  <button type="button" data-action="click->homes#getCurrentLocation">現在地取得</button>
+  <button type="button" data-action="click->homes#getCurrentLocation"
+    class="bg-orange-400 text-white py-2 px-4 m-4 border-2 border-black rounded-2xl cursor-pointer"
+  >現在地取得</button>
 </div>

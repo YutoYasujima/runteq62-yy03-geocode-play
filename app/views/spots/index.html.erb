@@ -1,0 +1,54 @@
+<div class="mb-4">
+  <%= link_to 'ホームへ', homes_path, class: 'text-blue-600' %>
+</div>
+<div
+  data-controller="spots"
+  data-spots-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
+  data-spots-records-value="<%= @spots.to_json %>"
+>
+  <div class="flex mb-8">
+    <div id="map" data-spots-target="map" style="width: 500px; height: 500px;"></div>
+    <div class="ml-8">
+      <% if @spots.present? %>
+        <table class="table-auto">
+          <thead class="border-b-1">
+            <tr>
+              <th>住所</th><th>緯度</th><th>経度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @spots %>
+          </tbody>
+        </table>
+      <% else %>
+        データがありません。
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= form_with model: @spot do |f| %>
+      <%# render 'shared/error_messages', object: f.object %>
+      <div class="mb-3">
+        <%= f.label :address %>
+        <%= f.text_field :address, data: { spots_target: 'address' }, class: "border py-1 px-3 ml-1" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude, data: { spots_target: 'latitude' }, class: "border py-1 px-3 ml-1" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude, data: { spots_target: 'longitude' }, class: "border py-1 px-3 ml-1" %>
+        <%# f.hidden_field :longitude %>
+      </div>
+      <%= f.submit nil, class: "bg-orange-400 text-white py-2 px-4 m-4 border-2 border-black rounded-2xl cursor-pointer" %>
+      <div>
+        <!-- <button type="button" data-action="click->spots#search" class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer">
+          500m内データ検索
+        </button> -->
+        <%= link_to '検索', '#', data: { action: 'click->spots#handleClick'}, class: "bg-blue-500 text-white py-2 px-4 rounded" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -19,13 +19,10 @@ export default class extends Controller {
   connect() {
     console.log(this.addressValue);
     console.log(this.testValue);
-    console.log("Maps Controller Connected");
     loadGoogleMaps(this.apiKeyValue).then(() => this.initMap());
   }
 
   async initMap() {
-    console.log("Initializing Tutorial Map...");
-
     // 東京駅の緯度・経度
     const tokyoStation = {lat: this.coordinateValue[0], lng: this.coordinateValue[1]};
 
@@ -44,17 +41,18 @@ export default class extends Controller {
     });
 
     // マーカー表示
-    const pin = new PinElement({});
-    const marker= new AdvancedMarkerElement({
+    this.pin = new PinElement({});
+    this.marker = new AdvancedMarkerElement({
       map: this.map,
       position: tokyoStation,
-      content: pin.element,
+      content: this.pin.element,
       gmpClickable: true,
       gmpDraggable: true,
       title: "Tokyo Station",
     });
   }
 
+  // 現在地取得
   async getCurrentLocation() {
     console.log('getCurrentLocation');
     if (!navigator.geolocation) {
@@ -76,15 +74,7 @@ export default class extends Controller {
         this.map.setZoom(16);
 
         // マーカー表示
-        const pin = new PinElement({});
-        const marker= new AdvancedMarkerElement({
-        map: this.map,
-        position: pos,
-        content: pin.element,
-        gmpClickable: true,
-        gmpDraggable: true,
-        title: "current location",
-    });
+        this.marker.position = pos;
       },
       // ユーザーが位置情報の取得を拒否した場合
       () => {

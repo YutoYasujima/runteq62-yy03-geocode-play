@@ -20,8 +20,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="m-8">
+    <!-- <main class="container mx-auto mt-28 px-5 flex"> -->
+    <%= render 'shared/flash_message' %>
+    <main class="container">
       <%= yield %>
     </main>
   </body>
