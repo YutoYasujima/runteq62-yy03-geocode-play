@@ -6,6 +6,7 @@
 <div
   data-controller="searchs"
   data-searchs-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>"
+  data-searchs-map-id-value="<%= ENV['GOOGLE_MAPS_MAP_ID'] %>"
   data-searchs-records-value="<%= @spots.to_json %>"
   data-searchs-spot-value="<%= @spot.to_json %>"
 >
