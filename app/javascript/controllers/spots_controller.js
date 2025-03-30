@@ -62,8 +62,6 @@ export default class extends Controller {
         map: this.map,
         position: { lat: record.latitude, lng: record.longitude },
         content: pin.element,
-        gmpClickable: true,
-        gmpDraggable: true,
         title: record.address,
       });
     });
