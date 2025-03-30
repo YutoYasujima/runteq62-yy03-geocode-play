@@ -37,7 +37,7 @@ export default class extends Controller {
       disableDefaultUI: true,
       zoomControl: true,
       fullscreenControl: true,
-      mapId: "DEMO_MAP_ID", // マップID("DEMO_MAP_ID"はお試しで使える制限付きのIDらしい)
+      mapId: this.mapIdValue,
     });
 
     // マーカー表示

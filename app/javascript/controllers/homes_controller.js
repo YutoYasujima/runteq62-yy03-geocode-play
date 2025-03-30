@@ -10,6 +10,7 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
+    mapId: String,
     coordinate: Array,
     address: String,
     test: Object,
@@ -37,7 +38,7 @@ export default class extends Controller {
       center: tokyoStation, // マップの中心座標
       zoom: 15, // マップの拡大(0:広域 ... 拡大:18？)
       zoomControl: true,
-      mapId: "DEMO_MAP_ID", // マップID(とりあえず付けておいた方が良さそう)
+      mapId: this.mapIdValue,
     });
 
     // マーカー表示
