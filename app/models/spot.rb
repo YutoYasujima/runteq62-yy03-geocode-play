@@ -1,8 +1,8 @@
 class Spot < ApplicationRecord
-  # geocoderの設定
-  geocoded_by :address
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :geocode
+  # geocoderの設定(入力フォームのデータを保存したい場合は、下記はない方が良いかも)
+  # geocoded_by :address
+  # reverse_geocoded_by :latitude, :longitude
+  # after_validation :geocode
 
   # バリデーション
   validates :address, presence: true
