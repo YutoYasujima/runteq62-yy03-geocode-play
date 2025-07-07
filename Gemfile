@@ -61,5 +61,5 @@ group :test do
 end
 
 gem "geocoder"
-gem "tailwindcss-rails", "~> 4.1"
+gem "tailwindcss-rails", "~> 4.3"
 gem "dotenv-rails"
